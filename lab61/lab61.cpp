@@ -19,19 +19,25 @@ void Print(int c[], const int size)
 		cout << setw(4) << c[i];
 	cout << endl;
 }
-int Sum(int c[], const int size)
-{
-	int S = 0;
-	for (int i = 0; i < size; i++)
-			S += c[i];
-	return S;
-}
+
 int Size(int c[], const int size)
 {
 	int length = 0;
-	for (int i = 0; i < size; i++)
-	length += 1;
+	for (int i = 0; i < size; i++) {
+		if ((c[i] > 0) || !(c[i] % 2 == 0)) {
+			length += 1;
+		};
+	};
 	return length;
+}
+int Sum(int c[], const int size)
+{
+	int S = 0;
+	for (int i = 0; i < size; i++) {
+		if ((c[i] > 0) || !(c[i] % 2 == 0))
+			S += c[i];
+	};
+	return S;
 }
 void Null(int c[], const int size)
 {
@@ -47,11 +53,11 @@ int main()
 	int Low = -35;
 	int High = 25;
 	Create(c, n, Low, High);
+	cout << "size = " << Size(c, n) << endl;
+	cout << "sum = " << Sum(c, n) << endl;
 	Print(c, n);
 	Null(c, n);
 	Print(c, n);
-	cout << "sum = " << Sum(c, n) << endl;
-	cout << "size = " << Size(c, n) << endl;
 	system("pause");
 	return 0;
 }
